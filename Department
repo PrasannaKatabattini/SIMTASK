@@ -1,0 +1,103 @@
+import java.util.*;
+
+class A {
+    String firstname;
+    String lastname;
+    String password;
+    String department;
+    String company;
+    int capacity=100;
+    String email;
+    String alternateemail;
+    String s;
+
+    A(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        System.out.println("Email is " + this.firstname + "" + this.lastname);
+        this.department = setDepartment();
+        System.out.println("Department :"+this.department);
+        this.password = password(7);
+        System.out.println("Your password is"+this.password);
+         email=firstname+"."+lastname+"@"+department+"."+"infosis"+"."+"com";
+    }
+
+    Scanner in = new Scanner(System.in);
+
+    // Ask for department
+    private String setDepartment() {
+        System.out.println("Enter the department\n 1 for sales\n 2 for department \n 3 for Accounting \n 4 for none");
+        int choice;
+        System.out.println("Enter choice");
+        choice = in.nextInt();
+        if (choice == 1)
+            return "sales";
+        else if (choice == 2)
+            return "department";
+        else if (choice == 3)
+            return "Accounting";
+        else
+            return "";
+    }
+
+    // Generate Password
+
+    private String password(int length) {
+        String p = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        char[] password = new char[length];
+        Random r = new Random();
+        for (int i = 0; i < length; i++) {
+            password[i] = p.charAt(r.nextInt(length));
+        }
+        return new String(password);
+    }
+public void setmailboxcapacity(int capacity)
+{
+    this.capacity=capacity;
+}
+
+public void setalternateemail(String alternateemail)
+{
+    this.alternateemail=alternateemail;
+}
+
+public void changepassword(String password)
+{
+    this.password=password;
+}
+
+public int getmailboxcapcity()
+{
+   return capacity;
+}
+
+public String getalternateemail()
+{
+    return alternateemail;
+}
+
+public String getchangepassword()
+{
+    return password;
+}
+
+public String show()
+{
+    return "Display name:"+firstname+""+lastname+"\n"+"Company mail:"+email+"\n"+"Mail capacity:"+capacity;
+}
+}
+
+
+public class email {
+    public static void main(String args[]) {
+       A ob= new A("prasanna", "katabattini");
+       
+       ob.setalternateemail("addankinikhil@gmail.com");
+       ob.getalternateemail();
+    
+
+       
+       System.out.println(ob.show());
+       
+    }
+}
